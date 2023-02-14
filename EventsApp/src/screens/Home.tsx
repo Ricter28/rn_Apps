@@ -33,7 +33,11 @@ import { useSelector } from "react-redux";
 function Home(props: any) {
 
   const handleIconChange = () => {
+    if(new Date().getFullYear() === 2022 &&
+    new Date().getMonth() === 11 &&
+    new Date().getDate() === 19){
     AppIcon.setAppIcon('SetLogo2');
+  }
   };
 
   let user = useSelector((state: any) => state.userReducer.user);
@@ -236,10 +240,6 @@ function Home(props: any) {
           />
         </TouchableOpacity>
       </View>
-
-      <TouchableOpacity onPress={handleIconChange}>
-        <Text>Change App Icon</Text>
-      </TouchableOpacity>
       <View style={styles.wrapUser}>
         <View>
           <Text style={styles.name}>Hello,{user.name}!</Text>

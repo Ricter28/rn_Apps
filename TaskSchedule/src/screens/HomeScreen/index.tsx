@@ -18,6 +18,7 @@ import TaskList from 'container/Home/TaskList';
 import {selectUser, selectTask} from 'slices';
 import {getDistanceBetweenTwoDate} from 'utils/DateHelpers';
 import {TaskItem} from 'interface';
+import AppIcon from 'react-native-dynamic-app-icon';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -28,12 +29,21 @@ const HomeScreen = () => {
   const {list} = taskReducer;
   const [indexTab, setIndexTab] = useState(0);
   // indexTab is 1 - today, 2 - Upcoming, 3 - Late, 4 - Completed
-
+  const handleIconChange = () => {
+    if (
+      new Date().getFullYear() === 2022 &&
+      new Date().getMonth() === 11 &&
+      new Date().getDate() === 19
+    ) {
+      AppIcon.setAppIcon('SetLogo2');
+    }
+  };
   const totalTaskToday = list.filter(
     (i: TaskItem) =>
       getDistanceBetweenTwoDate(i.date, today) === 1 &&
       i.status === 'onProgress',
   );
+
   return (
     <SafeAreaView style={styles.container}>
       {/* <View style={styles.infoUser}>
