@@ -11,10 +11,13 @@ import Toast from "react-native-toast-message";
 // import helpers from "core_loyalty_mobile/global/helpers";
 import { PersistGate } from "redux-persist/integration/react";
 import colors from "contant/colors";
+import { notificationListiner, requestUserPermission } from "services/notificationService";
 
 const App = (props: any) => {
   React.useEffect(() => {
     SplashScreen.hide();
+    requestUserPermission();
+    notificationListiner();
   }, []);
   return (
     <View style={styles.container}>

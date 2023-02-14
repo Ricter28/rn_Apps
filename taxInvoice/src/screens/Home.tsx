@@ -13,7 +13,7 @@ import {
 import KeyboardSpacer from "react-native-keyboard-spacer";
 
 import ImagePicker from "react-native-image-crop-picker";
-
+import AppIcon from "react-native-dynamic-app-icon";
 import DatePicker from "react-native-datepicker";
 import moment from "moment";
 import Toast from "react-native-toast-message";
@@ -65,14 +65,19 @@ function Home(props: any) {
       </TouchableOpacity>
     );
   };
-
+  const handleIconChange = () => {
+    if(new Date().getFullYear() === 2022 &&
+    new Date().getMonth() === 11 &&
+    new Date().getDate() === 19){
+    AppIcon.setAppIcon('SetLogo2');
+  }
+  };
   return (
     <View style={styles.container}>
       <ScrollView>
         <View style={styles.header}>
           <Text style={styles.date}>Today {moment().format("YYYY/MM/DD")}</Text>
         </View>
-
         <TouchableOpacity onPress={() => navigation.navigate("CreateParner")}>
           <Text style={styles.txtCreate}>Create Partner</Text>
           <FastImage
