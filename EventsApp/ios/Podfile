@@ -35,6 +35,8 @@ target 'paydi' do
     :hermes_enabled => false
   )
 
+  pod 'RNDynamicAppIcon', :path => '../node_modules/react-native-dynamic-app-icon'
+
   target 'paydiTests' do
     inherit! :complete
     # Pods for testing

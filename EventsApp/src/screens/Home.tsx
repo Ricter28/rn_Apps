@@ -13,7 +13,7 @@ import {
 import KeyboardSpacer from "react-native-keyboard-spacer";
 
 import ImagePicker from "react-native-image-crop-picker";
-
+import AppIcon from "react-native-dynamic-app-icon";
 import DatePicker from "react-native-datepicker";
 import moment from "moment";
 import Toast from "react-native-toast-message";
@@ -28,11 +28,17 @@ import HeaderScreen from "components/headers/HeaderScreen";
 import { useNavigation } from "@react-navigation/native";
 import { FlatList } from "react-native-gesture-handler";
 import { useSelector } from "react-redux";
-
+// import icon1 from '../../icon.png';
+// import icon2 from '../../ios.png';
 function Home(props: any) {
+
+  const handleIconChange = () => {
+    AppIcon.setAppIcon('SetLogo2');
+  };
+
   let user = useSelector((state: any) => state.userReducer.user);
   let listEvent = useSelector((state: any) => state.userReducer.listEvent);
-  const getIndexDay = ()=>{
+  const getIndexDay = () => {
     const date = new Date();
     const day = date.getUTCDay();
     const days = [];
@@ -44,10 +50,10 @@ function Home(props: any) {
     for (let i = 0; i < day; i++) {
       days.push(i);
     }
-   var i = (days.sort().indexOf(day));
-   console.log(i,'days')
-   return i
-  }
+    var i = days.sort().indexOf(day);
+    console.log(i, "days");
+    return i;
+  };
 
   const [active, setActive] = useState(null);
   const [isCategory, setIsCategory] = useState(false);
@@ -83,7 +89,7 @@ function Home(props: any) {
     for (let i = 0; i < day; i++) {
       days.push(i);
     }
-   var i = (days.indexOf(day));
+    var i = days.indexOf(day);
 
     const timestamps = [];
     const baseDate = new Date(time);
@@ -231,6 +237,9 @@ function Home(props: any) {
         </TouchableOpacity>
       </View>
 
+      <TouchableOpacity onPress={handleIconChange}>
+        <Text>Change App Icon</Text>
+      </TouchableOpacity>
       <View style={styles.wrapUser}>
         <View>
           <Text style={styles.name}>Hello,{user.name}!</Text>
@@ -283,7 +292,7 @@ function Home(props: any) {
         </View>
       </View>
 
-      <View style={{ marginTop: 20,flexGrow:1 }}>
+      <View style={{ marginTop: 20, flexGrow: 1 }}>
         <Text style={styles.titleCategoryEvent}>Popolar Events</Text>
         <FlatList
           data={dataPopular(getDaysOfWeek(moment().valueOf())[activeDate])}
