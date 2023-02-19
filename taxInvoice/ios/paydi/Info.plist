@@ -73,7 +73,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CodePushDeploymentKey</key>
-	<string>MeSKKM9ENZR_J0qvTOa6vbparl5lKDQj6jYp5</string>
+	<string></string>
 	<key>FacebookAppID</key>
 	<string>311512386899295</string>
 	<key>FacebookDisplayName</key>
